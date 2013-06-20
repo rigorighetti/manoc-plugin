@@ -3,12 +3,8 @@
 [%# ----------------------------------------------------------------- -%]
 [% MACRO ipphone(item) BLOCK-%]
 [% print_short_iface(item.device,item.iface) %] on 
-   <a href="[% c.uri_for_action('device/view',[item.device], {def_tab => 2})%]">
-   [% item.device %] </a>
-   [% IF item.mng_url -%]
-      <a href="[%item.mng_url%]"><img class="shortcut" border="0" src="[%
-                    c.uri_for('/static/images/set.png') %]" alt="mng url" /></a>
-   [% END-%]
-   ([%item.match%])
+   <a href="[% c.uri_for_action('device/view',[item.device.address], {def_tab => 2})%]">
+   [% item.device.address %] </a> ([%item.match%])
+
 [% END-%]
 

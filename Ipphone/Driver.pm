@@ -22,14 +22,13 @@ sub search_ipphone {
     my $it = $schema->resultset('CDPNeigh')->search( $search );
 
     while ( my $e = $it->next ) {
-      
 	 $result->add_item( Manoc::Plugin::Ipphone::Item->new(
             {
                 match     => $e->remote_id,
-	        device    => $e->from_device->id->address,
+	        device    => $e->from_device,
 	        iface     => $e->from_interface,
-	        mng_url   => $e->from_device->get_mng_url || '',
-	        timestamp => $e->get_column('last_seen'),
+	        #mng_url   => $e->from_device->get_mng_url || '';
+                timestamp => $e->get_column('last_seen'),
             }));
     }
 }
