@@ -2,7 +2,7 @@
 [%# Conf Plugin -%]
 [%# ----------------------------------------------------------------- -%]
 [% MACRO conf(item) BLOCK-%]
-<a href="[% c.uri_for_action('device/show_run', [item.id.address]) %]">	 
-[%item.id.address%] </a> ( [%item.name%] )
+<a href="[% c.uri_for_action('device/show_run', [item.device_entry.id.address]) %]">	 
+[%item.device_entry.id.address%] </a>  [%item.device_entry.name-%] 
 [% END-%]
 

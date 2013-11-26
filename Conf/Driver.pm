@@ -14,9 +14,8 @@ sub search_conf {
     my $pattern = $query->sql_pattern;
     my $schema  = $self->engine->schema;
 
-    $pattern =~ s/:/\./g;
+    $pattern =~ s/://g;
 
-    print "$pattern\n\n\n";
 
     my $search = { config => { like => $pattern } };
     $query->limit and
@@ -26,8 +25,8 @@ sub search_conf {
     while ( my $e = $it->next ) {
 	 $result->add_item( Manoc::Plugin::Conf::Item->new(
             {
-            match        => $e->device,
-	        device_entry => $e->device->device_info,
+            match        => $e->device->address,
+	    device_entry => $e->device_info,
 	        #mng_url   => $e->from_device->get_mng_url || '';
             }));
     }
